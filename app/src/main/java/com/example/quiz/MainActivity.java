@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.quiz.Data.Question;
-
 public class MainActivity extends AppCompatActivity {
     private Button trueButton;
     private Button falseButton;
@@ -60,12 +59,25 @@ public class MainActivity extends AppCompatActivity {
         int resultMessageId = 0;
         if (userAnswer == correctAnswer) {
             resultMessageId = R.string.correct_answer;
+            questions[currentIndex].setPoints(1);
         } else {
             resultMessageId = R.string.incorrect_answer;
+            questions[currentIndex].setPoints(0);
         }
         Toast.makeText(this, resultMessageId, Toast.LENGTH_SHORT).show();
+
     }
     private void setNextQuestion(){
         questionTextView.setText(questions[currentIndex].getQuestionId());
+
+        if(currentIndex == 0){
+            //Print points
+            int points =0;
+            for (Question q:questions) {
+                points +=q.getPoints();
+            }
+
+            Toast.makeText(this, "Points: " + points, Toast.LENGTH_SHORT).show();
+        }
     }
 }
