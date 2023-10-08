@@ -15,10 +15,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView questionTextView;
     private Question[] questions = new Question[]{
             new Question(R.string.q_activity, true),
-            new Question(R.string.q_find_resources, false),
+            new Question(R.string.q_version, false),
             new Question(R.string.q_listener, true),
             new Question(R.string.q_resources, true),
-            new Question(R.string.q_version, false),
+            new Question(R.string.q_find_resources, false),
     };
     private int currentIndex = 0;
 
@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this, resultMessageId, Toast.LENGTH_SHORT).show();
     }
-
     private void setNextQuestion(){
         questionTextView.setText(questions[currentIndex].getQuestionId());
     }
